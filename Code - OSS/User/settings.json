@@ -1,0 +1,49 @@
+{
+    "atomKeymap.promptV3Features": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "window.zoomLevel": 1,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "breadcrumbs.enabled": true,
+    "workbench.startupEditor": "newUntitledFile",
+    "explorer.confirmDragAndDrop": false,
+    "editor.fontFamily": "Dank Mono",
+    // "editor.fontFamily": "'Source Code Pro', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    // "editor.fontFamily": "Operator Mono, Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 15,
+    // "editor.fontWeight": "100",
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
+    "terminal.integrated.fontFamily": "'Source Code Pro', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "material-icon-theme.showWelcomeMessage": false,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "typescript.tsserver.log": "verbose",
+    "[typescript]": {},
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "workbench.colorTheme": "Atom One Dark",
+    "files.eol": "\n",
+    "[javascript]": {
+      "editor.defaultFormatter": "vscode.typescript-language-features"
+      // "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "workbench.colorCustomizations": {},
+    "[php]": {
+        "editor.tabSize": 4,
+    },
+    "editor.formatOnPaste": true,
+    "html.validate.styles": false,
+    "[html]": {
+      "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.iconTheme": "material-icon-theme",
+}

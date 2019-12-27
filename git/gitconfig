@@ -1,0 +1,31 @@
+[user]
+	name = Abhishek Singh
+	email = abhishek@newgenpayments.com
+[core]
+	editor = vim
+	autocrlf = input
+[color]
+    ui = auto
+[push]
+    default = simple
+[log]
+    abbrevCommit = 1
+[diff]
+	tool = diffuse
+[alias]
+	lol = log --graph --decorate --pretty=oneline --all
+	lols = log --graph --decorate --pretty=oneline --all --stat
+	lolb = log --graph --decorate --pretty=oneline
+	lolv = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	lolvv = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+	logstat = log --stat --summary --all
+	whatadded = log --diff-filter=A
+	fpa = fetch -p --all
+[merge]
+    conflictstyle = diff3
+[pager]
+    show = vim -c '%sm/\\e.\\{-}m//g' -c 'set ft=diff' +1 - 
+[help]
+    autocorrect = 30
+[commit]
+    template = ~/.gitmessage

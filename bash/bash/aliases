@@ -1,0 +1,50 @@
+alias reapache="sudo systemctl restart httpd"
+alias remysql="sudo systemctl restart mysqld"
+alias rdpserver="xfreerdp /v:192.168.1.250  /u:abhishek -encryption"
+
+# Specific File Editing
+alias vrc="vim ~/.bashrc"
+alias vac="vim ~/.bash_aliases"
+alias vaw="vim ~/.config/awesome/rc.lua"
+alias vn="vim ~/Files/Notes"
+
+# Directory Management
+alias mkd="mkdir -pv"
+alias ..="cd .. && ls -hN --color=auto"
+alias ...="cd ../../ && ls -hN --color=auto"
+alias ....="cd ../../../ && ls -hN --color=auto"
+alias ls="ls -hN --color=auto"
+alias l="ls -hN --color=auto"
+alias s="ls -hN --color=auto"
+alias gh="cd /var/www/html/ && ls -hN --color=auto"
+alias r="ranger "
+alias e="exit"
+
+# File Management
+alias x="chmod +x"
+alias v="vim "
+alias sv="sudo vim "
+alias pgrep="ps aux | grep"
+alias notes="cat ~/Files/Notes"
+alias grep="grep --color=auto"
+alias pacupdate="sudo pacman -Syu"
+alias projectdir="echo $_BOOST_BASE/$_PROJECT"
+
+# Terminal Programs
+alias pingg="hostname && curl ipinfo.io"
+
+alias tellmewhendone="notify-send -a 'Terminal Task' 'Done' \"In: `tty`\""
+alias colorlog="sed -e 's/\(.*INFO\)\(.*\)/\o033[33m\1\o033[39m\2/' -e 's/\(.*DEBUG\)\(.*\)/\o033[34m\1\o033[39m\2/' -e 's/\(.*ERROR\)\(.*\)/\o033[31m\1\o033[39m\2/'"
+alias find_gateway="find . -type d \( -path ./node_modules -o -path ./.git \) -prune -o -print"
+alias find_dashboard="find . -type d \( -path ./node_modules -o -path ./.git -o -path ./dist -o -path ./app/bower_components -o -path ./.tmp -o -path ./.sass-cache \) -prune -o -print"
+alias serve-this="ruby -run -ehttpd . -p8000"
+
+alias ll="ls -l"
+
+if [ -x /usr/bin/dircolors ]; then
+	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	alias ls='ls --color=auto'
+	alias grep='grep --color=auto'
+	alias fgrep='fgrep --color=auto'
+	alias egrep='egrep --color=auto'
+fi

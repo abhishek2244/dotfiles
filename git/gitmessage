@@ -1,0 +1,14 @@
+#[Bugfix]
+#[Feature]
+#[Update]
+#[Cleanup]
+#[Working]
+#[Security]
+#[Hotfix]
+#[deploy]
+# Commit body start{{{
+# -
+# *
+# }}}
+# Subject < 60 characters
+ 

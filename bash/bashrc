@@ -1,0 +1,34 @@
+
+HISTCONTROL=ignoreboth
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+source ~/.bash/ab
+
+shopt -s checkwinsize
+shopt -s histappend
+
+if [ -f ~/.bash_aliases ]; then
+	. ~/.bash_aliases
+fi
+if [ -f ~/.bash_exports ]; then
+	. ~/.bash_exports
+fi
+
+#{{{ Util functions
+function motd(){
+	clear
+	cat ~/.bash/motd 2>/dev/null
+	[[ $(command -v fortune) ]] && \
+		fortune -a work people paradoxum -s -n 200 | fold -w 60 -s
+}
+#}}}
+
+_BOOST_BASE='/home/abhishek/Project'
+
+source /etc/profile.d/vte.sh
+source /usr/share/bash-boostsales/boostsales_bash_mod && __init_boost_project
+
+source /usr/share/bash-altline/altline && al_default
+
+motd
