@@ -1,0 +1,111 @@
+HISTCONTROL=ignoreboth
+HISTSIZE=10000
+HISTFILESIZE=20000
+#TERM=xterm-256color
+ if [ -z "$TMUX" ]; then
+   mux default          
+ fi  
+source ~/.bash/ab
+#ACCENT_COLOR="255m"
+#ACCENT_COLOR_FG="162m"
+#_COLOR_PROJECT="240m"
+#_COLOR_BRANCH="27m"
+#_COLOR_PROMPT="236m"
+#_COLOR_PROJECT_FG="15m"
+#_COLOR_BRANCH_FG="27m"
+#_COLOR_PROMPT_FG="21m"
+
+_BOOST_BASE=/home/abhishek/Project
+_PROJECT='nodejs-gateway'
+
+shopt -s checkwinsize
+shopt -s histappend
+
+OPENED_SINCE=`date +%s`
+
+function _ps1_vcs_branch {
+	OLD_STATUS=$?
+	_branch=`git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'`
+	[[ ! -z "$_branch" ]] && echo -ne "\001\e[38;5;15m\002\001\e[48;5;$_COLOR_BRANCH\002 $_branch "
+	echo -ne "\001\e[48;5;$_COLOR_PROJECT\002\001\e[38;5;$_COLOR_BRANCH\002"
+	[[ ! -z "$_PROJECT" ]] && echo -ne "\001\e[38;5;236m\002\001\e[48;5;$_COLOR_PROJECT\002($_PROJECT)"
+	echo -ne "\001\e[48;5;$_COLOR_PROMPT\002\001\e[38;5;$_COLOR_PROJECT\002"
+	return $OLD_STATUS
+}
+
+function check_if_ssh_tty {
+	OLD_STATUS=$?
+	[[ ! -z "$SSH_TTY" ]] && echo '[SSH]'
+	return $OLD_STATUS
+}
+
+function print_last_status {
+	[[ $? != 0 ]] && echo "x_x "
+}
+
+function motd(){
+	clear
+	alsi -l -f ~/.config/alsi/alsi.logo
+	if [ $(command -v fortune) ]; then
+		fortune -a work people paradoxum -s -n 200
+	fi
+}
+
+function since(){
+	local NOW=`date +%s`
+	echo -e "\e[38;5;$ACCENT_COLOR" `python -c "print(round(($NOW - $OPENED_SINCE)/60))"` "minute(s).\e[0m"
+}
+
+function forward(){
+	ssh -R 8888:127.0.0.1:$1 abhishek@134.209.151.207
+}
+function forwardmisc(){
+	ssh -R 8887:192.168.1.24:$1 abhishek@134.209.151.207
+}
+function forwardportal(){
+	ssh -R 8889:192.168.1.24:$1 abhishek@134.209.151.207
+}
+# ACCENT_COLOR="236m"
+# PS1="\n\[\e[38;5;250m\]\[\e[48;5;240m\]\$(check_if_ssh_tty) \u@\h \[\e[48;5;$ACCENT_COLOR\]\[\e[38;5;240m\]\[\e[38;5;15m\]\[\e[48;5;$ACCENT_COLOR\] \w \[\e[0m\]\[\e[38;5;$ACCENT_COLOR\]\n\[\e[38;5;220m\]\[\e[48;5;236m\]\$(print_last_status)\$(parse_git_branch && parse_hg_branch)\[\e[0m\]\[\e[38;5;236m\]\[\e[0m\] "
+# PS1="\n\[\e[38;5;250m\]\[\e[48;5;240m\]\$(check_if_ssh_tty) \u@\h \[\e[48;5;$ACCENT_COLOR\]\[\e[38;5;240m\]\[\e[38;5;236m\]\[\e[48;5;$ACCENT_COLOR\] \w \[\e[0m\]\[\e[38;5;$ACCENT_COLOR\]\n\[\e[38;5;220m\]\[\e[48;5;236m\]\$(print_last_status)\$(parse_git_branch || parse_hg_branch)\[\e[0m\]\[\e[38;5;236m\]\[\e[0m\] "
+#PS1="\n\[\e[38;5;144m\]\[\e[48;5;237m\]\$(check_if_ssh_tty) \u@\h \[\e[48;5;$ACCENT_COLOR\]\[\e[38;5;237m\]\[\e[38;5;236m\]\[\e[48;5;$ACCENT_COLOR\] \w \[\e[0m\]\[\e[38;5;$ACCENT_COLOR\]\n\$(_ps1_vcs_branch)\[\e[0m\]\[\e[38;5;220m\]\[\e[48;5;$_COLOR_PROMPT\] \$(print_last_status)\\$ \[\e[0m\]\e[38;5;$_COLOR_PROMPT\]\[\e[0m\] "
+
+if [ -x /usr/bin/dircolors ]; then
+	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	alias ls='ls --color=auto'
+	alias grep='grep --color=auto'
+	alias fgrep='fgrep --color=auto'
+	alias egrep='egrep --color=auto'
+fi
+
+if [ -f ~/.bash_aliases ]; then
+	. ~/.bash_aliases
+fi
+if [ -f ~/.bash_exports ]; then
+	. ~/.bash_exports
+fi
+
+alias ll='ls -l'
+alias pacupdate='sudo pacman -Syyu'
+#export SONAR_SCANNER_HOME="/opt/sonar-scanner"
+#export PATH="${PATH}:${SONAR_SCANNER_HOME}/bin"
+
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+#export NODE_OPTIONS=--openssl-legacy-provider
+
+export PATH=$JAVA_HOME/bin:$PATH
+export PATH=/home/abhishek/.gem/ruby/3.0.0/bin:$PATH
+#export SLIMERJSLAUNCHER=/home/abhishek/firefox_59/firefox
+source /etc/profile.d/vte.sh
+source /usr/share/bash-boostsales/boostsales_bash_mod && __init_boost_project
+source /usr/share/bash-altline/altline && al_default
+# source /usr/share/bash-boostsales/boostsales_bash_ps1
+
+motd
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+#export PATH="$PATH:$HOME/.rvm/bin"
+
+
+# Load Angular CLI autocompletion.
+#source <(ng completion script)

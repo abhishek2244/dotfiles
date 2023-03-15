@@ -1,0 +1,17 @@
+_COLOR_PS1_RGB=true
+
+PS1_SEP=""
+ACCENT_COLOR="24;154;211m" #first bg between arrows
+# ACCENT_COLOR="168;153;132m" #first bg between arrows
+ACCENT_COLOR_FG="255;255;255m" #text of above
+# ACCENT_COLOR_FG="60;56;54m" #text of above
+_COLOR_PROJECT="0;80;115m" 
+# _COLOR_PROJECT="214;93;14m" 
+# _COLOR_PROJECT_FG="73;79;82m"
+_COLOR_PROJECT_FG=$ACCENT_COLOR_FG
+_COLOR_BRANCH="113;199;236m" #branch bg
+_COLOR_BRANCH_FG="50;49;45m" # branch text
+_COLOR_PROMPT="50;49;45m" # $ background
+_COLOR_PROMPT_FG="250;189;47m" # above text
+PS1_PWD_HOME=""
+# vim:ft=sh
